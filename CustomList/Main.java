@@ -1,0 +1,51 @@
+package CustomList;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        //List<Iterator> operation = new ArrayList<>();
+        Custom<String> operation = new Custom<>();
+
+        String word = scan.nextLine();
+
+        while (!"END".equals(word)){
+            String[] input = word.split("\\s+");
+            switch (input[0]){
+                case "Add":
+                    String element = input[1];
+                    operation.add(element);
+                    break;
+                case "Remove":
+                    operation.remove(Integer.parseInt(input[1]));
+                    break;
+                case "Contains":
+                    System.out.println(operation.contains(input[1]));
+                    break;
+                case "Swap":
+                    operation.swap(Integer.parseInt(input[1]), Integer.parseInt(input[2]));
+                    break;
+                case "Greater":
+                    System.out.println(operation.countGreaterThan(input[1]));
+                    break;
+                case "Max":
+                    System.out.println(operation.getMax());
+                    break;
+                case "Min":
+                    System.out.println(operation.getMin());
+                    break;
+                case "Print":
+                     operation.print();
+                    break;
+            }
+
+            word = scan.nextLine();
+        }
+
+
+    }
+}
